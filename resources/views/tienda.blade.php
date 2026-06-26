@@ -24,214 +24,311 @@
     <div class="row g-4">
         <!-- Sidebar Filters -->
         <aside class="col-lg-3">
-            <div class="mb-5">
-                <h3 class="filter-title">Categorías</h3>
-                <div class="d-flex flex-column gap-1">
-                    <label class="filter-item">
-                        <span class="font-body-md">Textile</span>
-                        <input checked="" class="form-check-input" type="checkbox" />
+
+            {{-- BUSCADOR --}}
+
+            <div class="card shadow-sm border-0 mb-4">
+
+                <div class="card-body">
+
+                    <label class="form-label fw-bold">
+
+                        Buscar
+
                     </label>
-                    <label class="filter-item">
-                        <span class="font-body-md">UV</span>
-                        <input class="form-check-input" type="checkbox" />
-                    </label>
-                    <label class="filter-item">
-                        <span class="font-body-md">Large Format</span>
-                        <input class="form-check-input" type="checkbox" />
-                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="buscar"
+                        placeholder="Nombre del producto...">
+
                 </div>
+
             </div>
-            <div class="mb-5">
-                <h3 class="filter-title">Marca</h3>
-                <div class="d-flex flex-column gap-2">
-                    <div class="form-check">
-                        <input class="form-check-input" id="brand1" name="brand" type="radio" />
-                        <label class="form-check-label" for="brand1">Hammer Core</label>
+
+
+
+            {{-- CATEGORIAS --}}
+
+            <div class="card shadow-sm border-0 mb-4">
+
+                <div class="card-body">
+
+                    <h5 class="mb-3">
+
+                        Categorías
+
+                    </h5>
+
+                    @foreach($categories as $category)
+
+                    <div class="form-check mb-2">
+
+                        <input
+
+                            class="form-check-input categoria"
+
+                            type="checkbox"
+
+                            value="{{$category->id}}"
+
+                            id="cat{{$category->id}}">
+
+                        <label
+
+                            class="form-check-label"
+
+                            for="cat{{$category->id}}">
+
+                            {{$category->nombre}}
+
+                            <span class="badge bg-light text-dark">
+
+                                {{$category->total}}
+
+                            </span>
+
+                        </label>
+
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" id="brand2" name="brand" type="radio" />
-                        <label class="form-check-label" for="brand2">Titan Series</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" id="brand3" name="brand" type="radio" />
-                        <label class="form-check-label" for="brand3">PrecisionPro</label>
-                    </div>
+
+                    @endforeach
+
                 </div>
+
             </div>
-            <div class="specs-card">
-                <h3 class="filter-title mb-3" style="color: var(--primary)">Technical Specs</h3>
-                <div class="mb-4">
-                    <label class="font-jetbrains mb-2 d-block" style="font-size: 12px;">Velocidad (m²/h)</label>
-                    <input class="form-range accent-primary w-100" type="range" />
-                    <div class="d-flex justify-content-between font-jetbrains" style="font-size: 12px;">
-                        <span>20</span>
-                        <span>500+</span>
+
+
+
+            {{-- MARCAS --}}
+
+            <div class="card shadow-sm border-0 mb-4">
+
+                <div class="card-body">
+
+                    <h5 class="mb-3">
+
+                        Marcas
+
+                    </h5>
+
+                    @foreach($brands as $brand)
+
+                    <div class="form-check mb-2">
+
+                        <input
+
+                            class="form-check-input marca"
+
+                            type="checkbox"
+
+                            value="{{$brand->id}}"
+
+                            id="brand{{$brand->id}}">
+
+                        <label
+
+                            class="form-check-label"
+
+                            for="brand{{$brand->id}}">
+
+                            {{$brand->nombre}}
+
+                            <span class="badge bg-light text-dark">
+
+                                {{$brand->total}}
+
+                            </span>
+
+                        </label>
+
                     </div>
+
+                    @endforeach
+
                 </div>
-                <div>
-                    <label class="font-jetbrains mb-2 d-block" style="font-size: 12px;">Cabezales</label>
-                    <select class="form-select font-jetbrains" style="font-size: 14px; border-color: var(--outline-variant);">
-                        <option>Todos</option>
-                        <option>Kyocera</option>
-                        <option>Ricoh Gen6</option>
-                        <option>Epson i3200</option>
-                    </select>
-                </div>
+
             </div>
+
+
+
+            <button
+
+                class="btn btn-outline-danger w-100"
+
+                id="limpiarFiltros">
+
+                Limpiar filtros
+
+            </button>
+
         </aside>
         <!-- Product Grid -->
         <div class="col-lg-9">
-            <div class="row g-4">
-                <!-- Product Card 1 -->
-                <div class="col-md-6 col-xl-4">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img alt="Industrial Textile Printer" class="product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc-xWB-X2kH8AW1FoinxEAqTXa9L-wCm-hy4WsMZyurHxB1gpUosvpK7EpiS54ykmFUDv1rwo-6CywINESu0Z1Oh4MPYqLlT_ekwVJU4e6fbIAWhb3_pF6kAYVsBc17ZQeDPH7AcWK0xC79hWgYS8iT05YWTpcd3aRSCGVJTsXJVsD-GSJXPQwkt6WzzutFWzZnslxToZK5WKegEdWaIo6UhBjCozmGIFjP3X_ovF9gEanJ8v4zOPd8j3bLVzMQuvc7SEemrgnVA" />
-                            <span class="badge-category badge-textile">TEXTILE</span>
+
+            <div class="card border-0 shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <div class="row align-items-center">
+
+                        <div class="col-md-4">
+
+                            <strong id="contadorProductos">
+
+                                Cargando...
+
+                            </strong>
+
                         </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between mb-2 font-jetbrains" style="font-size: 12px;">
-                                <span class="text-secondary-emphasis">TITAN SERIES</span>
-                                <span style="color: var(--secondary); font-weight: 700;">320m²/h</span>
-                            </div>
-                            <h2 class="h4 fw-bold mb-4">HAMMER TX-3200</h2>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a class="card-details-btn" href="{{route('detalle')}}">
-                                    Ver Detalles
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                                <i class="fa-solid fa-microchip text-muted" title="Kyocera Heads"></i>
-                            </div>
+
+                        <div class="col-md-4">
+
+                            <select
+
+                                class="form-select"
+
+                                id="orden">
+
+                                <option value="recientes">
+
+                                    Más recientes
+
+                                </option>
+
+                                <option value="precio_asc">
+
+                                    Precio menor
+
+                                </option>
+
+                                <option value="precio_desc">
+
+                                    Precio mayor
+
+                                </option>
+
+                                <option value="nombre">
+
+                                    Nombre A-Z
+
+                                </option>
+
+                            </select>
+
                         </div>
+
+                        <div class="col-md-4">
+
+                            <select
+
+                                class="form-select"
+
+                                id="perPage">
+
+                                <option value="12">
+
+                                    12 productos
+
+                                </option>
+
+                                <option value="24">
+
+                                    24 productos
+
+                                </option>
+
+                                <option value="36">
+
+                                    36 productos
+
+                                </option>
+
+                                <option value="48">
+
+                                    48 productos
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
                     </div>
+
                 </div>
-                <!-- Product Card 2 -->
-                <div class="col-md-6 col-xl-4">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img alt="UV Flatbed Printer" class="product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJYuvEvfD5p7A9PvSwDfGxQ49sQvqu738OBQZYptwnSMNvVWKsvlWIpWZKItXufwZhP4bPp2LowaO3sOlD6NhgYepi6ec_irGDDPwxtQXG4xEZbCXNwfN-EtowLjWvSYkVn6CQ43vg7EVciTPlucG_UAXcjGzC_LlNvoGy1kB6A6Hh6mXsBlYAwwh0TEo0xuwkF1jViXglYP02s7_oXrW0w08oeAyoLfQwlJHADSFLayFD21hOze266Saa-OMDmCu8cHBnCxHO-Q" />
-                            <span class="badge-category badge-uv">UV</span>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between mb-2 font-jetbrains" style="font-size: 12px;">
-                                <span class="text-secondary-emphasis">UV FLATBED</span>
-                                <span style="color: var(--secondary); font-weight: 700;">120m²/h</span>
-                            </div>
-                            <h2 class="h4 fw-bold mb-4">HAMMER UV-2513</h2>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a class="card-details-btn" href="{{route('detalle')}}">
-                                    Ver Detalles
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                                <i class="fa-solid fa-memory text-muted" title="Gen6 Heads"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product Card 3 -->
-                <div class="col-md-6 col-xl-4">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img alt="Large Format Printer" class="product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb8YrUEwTBuMX2Hy5wCFeTjoi03-zzsrF6YHVojntzXbegRq4wIKh_y1KoOz3yMiURXmD2CszrZJumvYWbA1RWBHl9UawvX0iFRGhwpueXoqB-P5SQFHFbzFaYYWWbiJe-daduPft64UgFeWviUWNqoDIXwBHaHvAKtTJABd3t096785Uj_xydHiPIfavJlmJDHl6HDF0Kv0wY-4PlnTwcSwxW20WnVp6PxENyI0iWUhpYmDdM_MzRRCVYlEz8fkgp1R8KUjFI2Q" />
-                            <span class="badge-category badge-large">LARGE FORMAT</span>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between mb-2 font-jetbrains" style="font-size: 12px;">
-                                <span class="text-secondary-emphasis">PRECISIONPRO</span>
-                                <span style="color: var(--secondary); font-weight: 700;">450m²/h</span>
-                            </div>
-                            <h2 class="h4 fw-bold mb-4">HAMMER LF-5000</h2>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a class="card-details-btn" href="{{route('detalle')}}">
-                                    Ver Detalles
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                                <i class="fa-solid fa-gauge-high text-muted" title="Dual Row"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product Card 4 -->
-                <div class="col-md-6 col-xl-4">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img alt="Mini Textile Printer" class="product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmZKu0hT4CAr97YOMWBusk_T85t7oBe5MnWEuiAD8HAuze9DWWyontukU26S0WQYZB4sOO8I6c_OK-cq6XCn3IsMV4Hj88aawgP0b5xMmB54dHJro6BEr5EaJoOPvC-ZBzQJ8a7itcp14Ad_rBf10AivIiCzNSU0V3niqd6577VdLsEUQ1Uw_2u_7HaNB_j7O05BtrhQciz7s2O4yWcyZGq770c37K-4bJ0vaaMP4k6Wekf849mb0SyH1VdN-GsOL5tKcrHpOZSQ" />
-                            <span class="badge-category badge-textile">TEXTILE</span>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between mb-2 font-jetbrains" style="font-size: 12px;">
-                                <span class="text-secondary-emphasis">CORE SERIES</span>
-                                <span style="color: var(--secondary); font-weight: 700;">180m²/h</span>
-                            </div>
-                            <h2 class="h4 fw-bold mb-4">HAMMER TX-MINI</h2>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a class="card-details-btn" href="{{route('detalle')}}">
-                                    Ver Detalles
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                                <i class="fa-solid fa-industry text-muted" title="Epson i3200"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product Card 5 -->
-                <div class="col-md-6 col-xl-4">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img alt="Hybrid UV Printer" class="product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBir3D16QaLMf-K-hDp4pSH5pNB2yuBrRcXh6U0Bcuj-ddd2NGmkJT1m8LOsPfzy_xzLxlkDP2zzyq9XduWUkLapVNVIEaFpSZCUhrtwyIRzgoAkR16aKZ-6Bid0xt5J0-35LucyNOkpQEYZViZvBxgIeolnCUlTin69c5KvaXRU7_GUMO7EPUld7j-tgmuHPfO8c2wi-3HyGZit8nNrJgCskcSfyEw9zM05-JP6R20FvxOvMJqlFBb0MSVLaMvBjGJspUV3195ig" />
-                            <span class="badge-category badge-uv">UV</span>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between mb-2 font-jetbrains" style="font-size: 12px;">
-                                <span class="text-secondary-emphasis">HYBRID SERIES</span>
-                                <span style="color: var(--secondary); font-weight: 700;">95m²/h</span>
-                            </div>
-                            <h2 class="h4 fw-bold mb-4">HAMMER HY-3000</h2>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a class="card-details-btn" href="{{route('detalle')}}">
-                                    Ver Detalles
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                                <i class="fa-solid fa-layer-group text-muted" title="Texture Engine"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product Card 6 -->
-                <div class="col-md-6 col-xl-4">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img alt="Industrial Extreme Printer" class="product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlsmHGbe-Z28Jz7tccYdxMS_hKhYzxc1DNfyh7Woyk9egf4MCDiuCTz-xn_WB12AziSEEZFPRzZlNJtVf2sNn-STY9fCbJ55geS4Canlzl-i1ssQWWXSvO8Rc1KF5QHj6cLd5JDUWiUn3_9bLlZ3lrRK8FSFCiwPupKR4vB7HL0JIVEoyst_3jcKWBcPV8PXoAiCYs1dyK3VbcPun4MgsOBkZRjJNpR33rL6r6cK_id6SK0ABOHpwTzGwwYB-V3ZBeXa1eipnetg" />
-                            <span class="badge-category badge-industrial">INDUSTRIAL</span>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between mb-2 font-jetbrains" style="font-size: 12px;">
-                                <span class="text-secondary-emphasis">EXTREME SERIES</span>
-                                <span style="color: var(--secondary); font-weight: 700;">800m²/h</span>
-                            </div>
-                            <h2 class="h4 fw-bold mb-4">HAMMER ULTIMATE X</h2>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a class="card-details-btn" href="{{route('detalle')}}">
-                                    Ver Detalles
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                                <i class="fa-solid fa-bolt text-muted" title="Max Output"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
-            <!-- Pagination -->
-            <div class="mt-5 pt-4 text-center">
-                <button class="btn border px-5 py-3 mb-3 font-jetbrains" style="background-color: var(--surface-container-high); font-size: 14px;">
-                    Cargar más modelos
-                </button>
-                <p class="font-jetbrains" style="font-size: 12px; color: var(--outline);">Mostrando 6 de 42 equipos industriales</p>
+
+
+
+            {{-- LOADER --}}
+
+            <div
+
+                id="loader"
+
+                class="row g-4"
+
+                style="display:none">
+
+                @for($i=1;$i<=8;$i++)
+
+                    <div class="col-md-6 col-xl-4">
+
+                    <div class="card">
+
+                        <div
+
+                            style="height:260px;background:#ececec"
+
+                            class="placeholder-glow"></div>
+
+                        <div class="card-body">
+
+                            <span class="placeholder col-8"></span>
+
+                            <span class="placeholder col-6"></span>
+
+                            <span class="placeholder col-4"></span>
+
+                        </div>
+
+                    </div>
+
             </div>
+
+            @endfor
+
         </div>
+
+
+
+        {{-- PRODUCTOS AJAX --}}
+
+        <div id="contenedorProductos">
+
+        </div>
+
+
+
+        {{-- PAGINACION AJAX --}}
+
+        <div
+
+            id="contenedorPaginacion"
+
+            class="mt-5">
+
+        </div>
+
     </div>
 </div>
+</div>
 
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
     // Simulated loading interaction
     document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
@@ -244,6 +341,8 @@
         });
     });
 </script>
+
+<script src="{{asset('js/tienda.js')}}"></script>
 @endsection
 
 <style>
@@ -631,4 +730,3 @@
         }
     }
 </style>
-

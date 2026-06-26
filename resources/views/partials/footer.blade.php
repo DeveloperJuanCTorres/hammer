@@ -4,14 +4,29 @@
         <div class="row g-4">
             <div class="col-12 col-lg-3">
                 <div class="d-flex align-items-center mb-4">
-                    <img alt="HAMMER" class="me-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeQRKYgIIvNkwrCaBI8RC_JiVf2GzkhleOLlhjZxZJMDpp8uok72PRBr6_Z_ojN8F3Zz6TyD8wuisZXS-FndOlzgqFzpzyGql244a3_5V1ds1HyYvLnH3HHnhInzopR7ke8ZXWgoTNcI-5qBi02tkjpQDb6ADefuOymtD87zj3m9Ul6G4A7zi2oKm4H1NvB8Op0HWYRMxZwP4ntK65lj9Wvldyynggg5O9qnTjUWn0OZp2ba2hi5Wcj8YPch8JDslPCRKKp6UZ6A" style="height: 32px;" />
-                    <span class="h4 fw-bold mb-0 font-display">HAMMER</span>
+                    <img alt="HAMMER Logo" class="me-2" src="{{asset('storage/' . $company->logo)}}" width="150" />
                 </div>
-                <p class="text-muted mb-4">Soluciones integrales de impresión industrial. Innovación y confiabilidad para el mercado gráfico latinoamericano.</p>
+                <p class="text-muted mb-4">{{$company->descripcion}}</p>
                 <div class="d-flex gap-3">
-                    <a class="social-link" href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a class="social-link" href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a class="social-link" href="#"><i class="fa-brands fa-youtube"></i></a>
+                    @if($company->link_facebook)
+                    <a class="social-link" href="{{$company->link_facebook}}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    @endif
+
+                    @if($company->link_instagram)
+                    <a class="social-link" href="{{$company->link_instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    @endif
+
+                    @if($company->link_tiktok)
+                    <a class="social-link" href="{{$company->link_tiktok}}" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    @endif
+
+                    @if($company->link_youtube)
+                    <a class="social-link" href="{{$company->link_youtube}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    @endif
+
+                    @if($company->link_linkedin)
+                    <a class="social-link" href="{{$company->link_linkedin}}" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    @endif
                 </div>
             </div>
             <div class="col-12 col-md-4 col-lg-3">
@@ -29,15 +44,15 @@
                 <div class="d-flex flex-column gap-3 text-muted">
                     <div class="d-flex gap-3">
                         <i class="fa-solid fa-location-dot text-primary"></i>
-                        <span>Av. Industrial 450, Lima, Perú</span>
+                        <span>{{$company->direccion}}</span>
                     </div>
                     <div class="d-flex gap-3 align-items-center">
                         <i class="fa-solid fa-phone text-primary"></i>
-                        <span>+51 1 234 5678</span>
+                        <span>{{$company->telefono}}</span>
                     </div>
                     <div class="d-flex gap-3 align-items-center">
                         <i class="fa-solid fa-envelope text-primary"></i>
-                        <span>contacto@hammer-print.com</span>
+                        <span>{{$company->correo}}</span>
                     </div>
                 </div>
             </div>
@@ -63,3 +78,45 @@
         </div>
     </div>
 </footer>
+
+
+<div class="floating-whatsapp">
+
+    <button class="wa-button" id="btnWhatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <div class="wa-list" id="waList">
+
+        @foreach($especialistas as $item)
+
+            <a
+                href="https://wa.me/+51{{ $item->whatsapp }}?text=Hola,%20quisiera%20más%20información."
+                target="_blank"
+                class="wa-card">
+
+                <img src="{{ asset('storage/'.$item->imagen) }}">
+
+                <div>
+
+                    <div class="nombre">
+
+                        {{ $item->nombre }}
+
+                    </div>
+
+                    <div class="cargo">
+
+                        {{ $item->cargo }}
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        @endforeach
+
+    </div>
+
+</div>

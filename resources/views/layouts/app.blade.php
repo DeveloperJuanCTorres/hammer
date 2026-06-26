@@ -9,6 +9,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <?php
+    $version = '1993.5.0';
+    ?>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -20,7 +24,8 @@
     <!-- Font Awesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
 
-    <link href="{{asset ('css/styles.css')}}" rel="stylesheet" />
+    <link href="{{asset ('css/styles.css')}}?v=<?php echo $version ?>" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <!-- Scripts -->
     <!-- vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
@@ -38,5 +43,29 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <script>
+        const boton = document.getElementById('btnWhatsapp');
+        const lista = document.getElementById('waList');
+
+        boton.addEventListener('click', function () {
+            lista.classList.toggle('show');
+
+            this.innerHTML = lista.classList.contains('show')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fab fa-whatsapp"></i>';
+        });
+
+        // Cerrar al hacer clic fuera
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.floating-whatsapp')) {
+                lista.classList.remove('show');
+                boton.innerHTML = '<i class="fab fa-whatsapp"></i>';
+            }
+        });
+    </script>
+    
+    
 </body>
 </html>

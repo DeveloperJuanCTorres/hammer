@@ -12,10 +12,7 @@
                     <h2 class="headline-lg text-primary mb-4 ps-4 border-start border-4 border-secondary">Trayectoria de Precisión</h2>
                     <div class="body-md text-muted mb-5">
                         <p class="mb-4">
-                            Desde nuestra fundación, <strong>HAMMER</strong> ha redefinido los límites de lo que es posible en la industria de la impresión. No solo fabricamos equipos; construimos las herramientas que permiten a las empresas alcanzar nuevos niveles de eficiencia y calidad.
-                        </p>
-                        <p>
-                            Nuestro compromiso con la precisión se refleja en cada componente que diseñamos. Con una herencia arraigada en la ingeniería alemana y una visión volcada hacia la digitalización global, HAMMER se posiciona como el socio estratégico indispensable para el sector industrial.
+                            {!! $nosotros->trayectoria !!}
                         </p>
                     </div>
                     <div class="row g-4">
@@ -43,23 +40,24 @@
             <div class="col-md-6 d-none d-md-block">
                 <div class="row g-3">
                     <div class="col-6">
-                        <div class="aspect-square d-flex align-items-center justify-content-center border rounded-4" style="background-color: rgba(0, 53, 197, 0.05); border-color: rgba(0, 53, 197, 0.1) !important;">
-                            <i class="fa-solid fa-microchip text-primary" style="font-size: 80px; font-weight: 200;"></i>
+                        <div class="aspect-square bento-img-container">
+                            <img alt="Industrial precision component" class="w-100 h-100 object-fit-cover" src="{{asset('storage/' . $nosotros->imagen_1)}}" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="aspect-square bento-img-container mt-5">
-                            <img alt="Industrial precision component" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWg3xADHmJ3mvMv8520_PZ39QCYBIthDWuJ4GRCdKqQWVM0sBr0d93ikw522szPtvx_DkfzxNMew3kMU3nH3VxjZBAcVRv7R-mx7woRJZid2jHsGf_NdX_7JmR-ZBEdhw40LktRmuFi9LYF6LI3RJfMkDdnOcVRUz-y2p_mb40abZCXccEimyedYjFtx_LjDkbsDULPwaQmnGrzNEfNDOyUdI2RBcv86OVu7nfwfo2I8en4WRywXo2ZldCWILoFWJnKoSWwErp3g" />
+                            <img alt="Industrial precision component" class="w-100 h-100 object-fit-cover" src="{{asset('storage/' . $nosotros->imagen_2)}}" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="aspect-square bento-img-container" style="margin-top: -3rem;">
-                            <img alt="Circuit board technology" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3O-LCHZ9ilGI2Dpd0BrIUG3nMPFiRBbyVDbEyJw1DaPwC9tdmdJqCHmumoW-xcy89Zw14bbAErCjcx6RU3-NSizA7okMzv8Wch6tzZIh0otdwyFjg16vu4Cb5QB7ZYm-JUqQOs9P0NoNWsvw66ju_AnaLmTv5Z-4IC7ywFHzVddnKj6lebIfnNabTOm-DlVPOgpzWoFA_WUpQQeZCfEX1R4wJnKoHmY325F_7NFb4v-urNHdJGaBtJaFnpdPIy8DTBSvXS9LtNQ" />
+                            <img alt="Circuit board technology" class="w-100 h-100 object-fit-cover" src="{{asset('storage/' . $nosotros->imagen_3)}}" />
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="aspect-square d-flex align-items-center justify-content-center border rounded-4" style="background-color: rgba(160, 65, 0, 0.05); border-color: rgba(160, 65, 0, 0.1) !important;">
-                            <i class="fa-solid fa-gauge-high text-secondary" style="font-size: 80px; font-weight: 200;"></i>
+                        <div class="aspect-square bento-img-container">
+                            <!-- <i class="fa-solid fa-gauge-high text-secondary" style="font-size: 80px; font-weight: 200;"></i> -->
+                            <img alt="Circuit board technology" class="w-100 h-100 object-fit-cover" src="{{asset('storage/' . $nosotros->imagen_4)}}" />
                         </div>
                     </div>
                 </div>
@@ -81,7 +79,7 @@
                         <i class="fa-solid fa-crosshairs text-primary" style="font-size: 24px;"></i>
                     </div>
                     <h3 class="headline-md text-primary mb-3">Misión</h3>
-                    <p class="body-md text-muted mb-0">Proveer soluciones de impresión industrial de alta precisión que potencien la productividad de nuestros clientes.</p>
+                    <p class="body-md text-muted mb-0">{!! $nosotros->mision !!}</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -90,7 +88,7 @@
                         <i class="fa-solid fa-eye text-white" style="font-size: 24px;"></i>
                     </div>
                     <h3 class="headline-md text-white mb-3">Visión</h3>
-                    <p class="body-md mb-0" style="color: var(--surface-container-highest);">Ser el referente global en tecnología de impresión industrial, impulsando la industria hacia un futuro más eficiente.</p>
+                    <p class="body-md mb-0" style="color: var(--surface-container-highest);">{!! $nosotros->vision !!}</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -100,18 +98,7 @@
                     </div>
                     <h3 class="headline-md text-secondary mb-4">Valores</h3>
                     <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-center gap-3 label-md mb-3">
-                            <span class="rounded-circle" style="width: 8px; height: 8px; background-color: var(--secondary);"></span> PRECISIÓN
-                        </li>
-                        <li class="d-flex align-items-center gap-3 label-md mb-3">
-                            <span class="rounded-circle" style="width: 8px; height: 8px; background-color: var(--secondary);"></span> INNOVACIÓN
-                        </li>
-                        <li class="d-flex align-items-center gap-3 label-md mb-3">
-                            <span class="rounded-circle" style="width: 8px; height: 8px; background-color: var(--secondary);"></span> COMPROMISO
-                        </li>
-                        <li class="d-flex align-items-center gap-3 label-md">
-                            <span class="rounded-circle" style="width: 8px; height: 8px; background-color: var(--secondary);"></span> EXCELENCIA TÉCNICA
-                        </li>
+                        <p class="body-md mb-0" style="color: var(--surface-container-highest);">{!! $nosotros->valores !!}</p>
                     </ul>
                 </div>
             </div>
@@ -124,14 +111,14 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6 order-2 order-lg-1">
                 <div class="team-img-wrapper">
-                    <img alt="Equipo Técnico HAMMER" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV25OxFNeZnDK-aH8Qbu_NwUhIOMC34TPRJ8LixWaiJHEddU2kjLrqMM8uAoV5qU4qXtrWRs7xLZxZryxrC4roeBq1BQnuAWDhHLS2gFCm7Z4k8e8Ew4-Wtz_a8LkRIFNBwRQH53vlyiBPn8hbhs9BwLHuoaIuRjvaunGsLtTjoT0VoygDz__gR7q_X3y6ZJYAb5H79E4CsBR1MMPTR5tNiDVRD_GrVsYnkT0jgVm9n6bDo7JVMNVGi1VQ4X8b8JSXaLk4U-d62g" />
+                    <img alt="Equipo Técnico HAMMER" class="w-100 h-100 object-fit-cover" src="{{asset('storage/' . $nosotros->imagen_talento)}}" />
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2">
                 <span class="tag-badge mb-4">TALENTO HUMANO</span>
-                <h2 class="headline-lg mb-4">El Motor Detrás de la Máquina</h2>
+                <h2 class="headline-lg mb-4">{{$nosotros->titulo_talento}}</h2>
                 <p class="body-lg text-muted mb-5">
-                    Nuestro equipo está compuesto por ingenieros, diseñadores y técnicos especialistas con una pasión compartida por la perfección. En HAMMER, creemos que la mejor tecnología solo es posible gracias al talento y la colaboración humana.
+                    {!! $nosotros->descripcion_talento !!}
                 </p>
                 <div class="d-flex flex-column gap-4">
                     <div class="d-flex align-items-start gap-3">

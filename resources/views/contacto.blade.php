@@ -21,7 +21,7 @@
                             <i class="fa-solid fa-location-dot text-primary fs-4"></i>
                             <h2 class="font-headline fs-4 mb-0">Sede Central</h2>
                         </div>
-                        <p class="text-on-surface-variant mb-0">Parque Industrial Tecnológico, Torre 4, Nivel 12. Ciudad de México, CP 01210.</p>
+                        <p class="text-on-surface-variant mb-0">{{$company->direccion}}</p>
                     </div>
                     <div class="position-relative">
                         <img alt="Map" class="w-100 map-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNZbGgnGFvDf2ecrdo61mrkswsV3MW1NhPFNhu766tUldOpeG_1V5oZrMq-E8C4H-YmrYMAmUXqlhwH8vj5OU99MUC23On40jmkFuvgKROZYMzkzdAFphz1S2rV7Izx-8qepk1oLC5PDpE_MXzJWu9tZI3tsNiAZ5cccQSToJlHRWunxKHHI0Pg16yH_nhED7S11sgnh2ANICuStZ2M8votaXw10jg3IoKPR9fa0aUPvZucEL8LuJCkUXI33k9agPI5KODRKtNbg" />
@@ -35,34 +35,41 @@
                 <!-- Departmental Contact -->
                 <div class="d-flex flex-column gap-3">
                     <div class="bg-surface-container department-card" style="border-left-color: var(--primary);">
-                        <h3 class="font-label text-primary mb-2">VENTAS</h3>
-                        <p class="font-headline fs-4 mb-1">+52 55 1234 5678</p>
-                        <p class="text-on-surface-variant mb-0">sales@hammer-industrial.com</p>
+                        <h3 class="font-label text-primary mb-2">Teléfono</h3>
+                        <p class="font-headline fs-4 mb-1">{{$company->telefono}}</p>
                     </div>
                     <div class="bg-surface-container department-card" style="border-left-color: var(--tertiary);">
-                        <h3 class="font-label text-tertiary mb-2">SOPORTE TÉCNICO</h3>
-                        <p class="font-headline fs-4 mb-1">+52 55 8765 4321</p>
-                        <p class="text-on-surface-variant mb-0">support@hammer-industrial.com</p>
+                        <h3 class="font-label text-tertiary mb-2">CORREO ELECTRÓNICO</h3>
+                        <p class="font-headline fs-4 mb-1">{{$company->correo}}</p>
                     </div>
                     <div class="bg-surface-container department-card" style="border-left-color: var(--on-surface-variant);">
-                        <h3 class="font-label text-on-surface-variant mb-2">ADMINISTRACIÓN</h3>
-                        <p class="font-headline fs-4 mb-1">admin@hammer-industrial.com</p>
-                        <p class="text-on-surface-variant mb-0">Horario: Lun - Vie | 08:00 - 18:00</p>
+                        <h3 class="font-label text-on-surface-variant mb-2">Horario de atención</h3>
+                        <p class="font-headline fs-4 mb-1">{{$company->horario}}</p>
                     </div>
                 </div>
                 <!-- Socials & Hours -->
                 <div class="pt-4 border-top border-light-subtle d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-4">
                     <div class="d-flex gap-3">
-                        <a class="social-btn" href="#"><i class="fa-solid fa-share-nodes"></i></a>
-                        <a class="social-btn" href="#"><i class="fa-solid fa-video"></i></a>
-                        <a class="social-btn" href="#"><i class="fa-solid fa-globe"></i></a>
-                    </div>
-                    <div class="text-md-end">
-                        <div class="d-flex align-items-center gap-2 justify-content-md-end mb-1">
-                            <span class="bg-danger rounded-circle d-inline-block" style="width: 8px; height: 8px; animation: pulse 1.5s infinite;"></span>
-                            <span class="font-label text-on-surface" style="font-size: 12px;">CENTRO ACTIVO</span>
-                        </div>
-                        <p class="small text-on-surface-variant mb-0">Zona Horaria: Central Standard Time (CST)</p>
+
+                        @if($company->link_facebook)
+                        <a class="social-btn" href="{{$company->link_facebook}}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        @endif
+
+                        @if($company->link_instagram)
+                        <a class="social-btn" href="{{$company->link_instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        @endif
+
+                        @if($company->link_tiktok)
+                        <a class="social-btn" href="{{$company->link_tiktok}}" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        @endif
+
+                        @if($company->link_youtube)
+                        <a class="social-btn" href="{{$company->link_youtube}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                        @endif
+
+                        @if($company->link_linkedin)
+                        <a class="social-btn" href="{{$company->link_linkedin}}" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -97,42 +104,20 @@
                     <div class="mb-4">
                         <label class="font-label text-on-surface-variant mb-3 d-block">Seleccionar Especialista</label>
                         <div class="row g-3">
+                            @foreach($especialistas as $key => $especialista)
                             <div class="col-md-4">
-                                <input checked="" class="advisor-radio" id="adv-1" name="advisor" type="radio" />
-                                <label class="advisor-label" for="adv-1">
+                                <input class="advisor-radio" id="{{$key}}" name="advisor" type="radio" />
+                                <label class="advisor-label" for="{{$key}}">
                                     <div class="rounded-circle overflow-hidden bg-secondary-subtle" style="width: 48px; height: 48px; flex-shrink: 0;">
-                                        <img alt="Advisor" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvlqlo_OyBNv9pWGH_RelPdORaNLw1chCXzInUeVrFx1ZpvgVwaiImr0_QkgCdUrK1fhm6N1wc55VxM9bSo1r3_uUr-SrjQgYZz1waxA0kldEW_hXC7YdeZM-V1u7CrRZuQx23lQcK4BjGBPbfqUIAZTnZDMhJfhcrElFV1Jj2mcgOyjCGSI0AOJx9Ak0t8Pq2jjN7qEpheqtWq4eZgNES9daaKjljV5vF2p9M8vd2J_zfPIb3xvsT9aw" />
+                                        <img alt="Advisor" class="w-100 h-100 object-fit-cover" src="{{asset('storage/' . $especialista->imagen)}}" />
                                     </div>
                                     <div>
-                                        <p class="font-label mb-0" style="text-transform: none; font-family: Lexend;">Ventas</p>
-                                        <p class="small text-on-surface-variant mb-0">Cotizaciones</p>
+                                        <p class="font-label mb-0" style="text-transform: none; font-family: Lexend;">{{$especialista->cargo}}</p>
+                                        <p class="small text-on-surface-variant mb-0">{{$especialista->nombre}}</p>
                                     </div>
                                 </label>
                             </div>
-                            <div class="col-md-4">
-                                <input class="advisor-radio" id="adv-2" name="advisor" type="radio" />
-                                <label class="advisor-label" for="adv-2">
-                                    <div class="rounded-circle overflow-hidden bg-secondary-subtle" style="width: 48px; height: 48px; flex-shrink: 0;">
-                                        <img alt="Advisor" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvlqlo_OyBNv9pWGH_RelPdORaNLw1chCXzInUeVrFx1ZpvgVwaiImr0_QkgCdUrK1fhm6N1wc55VxM9bSo1r3_uUr-SrjQgYZz1waxA0kldEW_hXC7YdeZM-V1u7CrRZuQx23lQcK4BjGBPbfqUIAZTnZDMhJfhcrElFV1Jj2mcgOyjCGSI0AOJx9Ak0t8Pq2jjN7qEpheqtWq4eZgNES9daaKjljV5vF2p9M8vd2J_zfPIb3xvsT9aw" />
-                                    </div>
-                                    <div>
-                                        <p class="font-label mb-0" style="text-transform: none; font-family: Lexend;">Soporte</p>
-                                        <p class="small text-on-surface-variant mb-0">Asistencia</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="col-md-4">
-                                <input class="advisor-radio" id="adv-3" name="advisor" type="radio" />
-                                <label class="advisor-label" for="adv-3">
-                                    <div class="rounded-circle overflow-hidden bg-secondary-subtle" style="width: 48px; height: 48px; flex-shrink: 0;">
-                                        <img alt="Advisor" class="w-100 h-100 object-fit-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvlqlo_OyBNv9pWGH_RelPdORaNLw1chCXzInUeVrFx1ZpvgVwaiImr0_QkgCdUrK1fhm6N1wc55VxM9bSo1r3_uUr-SrjQgYZz1waxA0kldEW_hXC7YdeZM-V1u7CrRZuQx23lQcK4BjGBPbfqUIAZTnZDMhJfhcrElFV1Jj2mcgOyjCGSI0AOJx9Ak0t8Pq2jjN7qEpheqtWq4eZgNES9daaKjljV5vF2p9M8vd2J_zfPIb3xvsT9aw" />
-                                    </div>
-                                    <div>
-                                        <p class="font-label mb-0" style="text-transform: none; font-family: Lexend;">Proyectos</p>
-                                        <p class="small text-on-surface-variant mb-0">Implementación</p>
-                                    </div>
-                                </label>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="mb-5">
@@ -186,6 +171,7 @@
         });
     });
 </script>
+
 @endsection
 
 <style>
@@ -385,6 +371,6 @@
     footer {
         background-color: var(--surface-container-highest);
         border-top: 1px solid var(--outline-variant);
-        padding: 3rem 0;
+        /* padding: 3rem 0; */
     }
 </style>
